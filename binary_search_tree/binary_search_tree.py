@@ -1,5 +1,5 @@
 import sys
-sys.path.append('~/OneDrive/Desktop/school/Data-Structures/queue_and_stack')
+sys.path.append('../queue_and_stack')
 from dll_queue import Queue
 from dll_stack import Stack
 
@@ -23,6 +23,8 @@ class BinarySearchTree:
             self.right = BinarySearchTree(value)
         elif value > self.value and self.right:
             self.right.insert(value)
+        elif value == self.value and not self.right:
+            self.right = BinarySearchTree(value)
 
     # Return True if the tree contains the value
     # False if it does not
@@ -91,10 +93,16 @@ class BinarySearchTree:
     # STRETCH Goals -------------------------
     # Note: Research may be required
 
-    # # Print Pre-order recursive DFT
-    # def pre_order_dft(self, node):
-    #     pass
+    # Print Pre-order recursive DFT
+    def pre_order_dft(self, node):
+        if not node: return
+        print(node.value)
+        if node.left: self.pre_order_dft(node.left)
+        if node.right: self.pre_order_dft(node.right)
 
-    # # Print Post-order recursive DFT
-    # def post_order_dft(self, node):
-    #     pass
+    # Print Post-order recursive DFT
+    def post_order_dft(self, node):
+        if not node: return
+        if node.left: self.post_order_dft(node.left)
+        if node.right: self.post_order_dft(node.right)
+        print(node.value)
